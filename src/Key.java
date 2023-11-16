@@ -12,7 +12,7 @@ super("key");
 
 public void use() {
 
-if (Game.getCurrentRoom().getName().equals("kitchen")) {
+if (Game.getCurrentRoom().getName().equals("Crypt")) {
 
 
 if (isUsed())
@@ -23,16 +23,16 @@ System.out.println("The chest is already open.");
 else {
 
 
-System.out.println("They key fits into the chest! You open the chest and" + " find a diamond inside!");
+System.out.println("They key fits into the chest! You open the chest and" + " find a code inside!");
 
 
-Item diamond = new Item("diamond");
+Item code = new Item("theres a code inside for the door");
 
 
-diamond.setDesc("Sparkly!");
+code.setDesc("it says 7589!");
 
 
-Game.getCurrentRoom().addItem(diamond);
+Game.getCurrentRoom().addItem(code);
 
 
 setUsed(true);
