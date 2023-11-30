@@ -32,8 +32,9 @@ public class Item {
         used = b;
     }
 
-    public void look() {
+    public Room look() {
         System.out.println(desc);
+		return null;
     }
 
     public void use() {
