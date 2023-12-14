@@ -1,0 +1,212 @@
+public class World {
+	     
+    	public static Room buildWorld() {
+
+Room Foyer = new Room("Foyer" ,"A grand entrance hall with a dusty chandelier and faded portraits lining the walls. A marble staircase leads upstairs. You are in the Foyer. There's a locked door with a numeric keypad.");
+
+		
+Room Library = new Room("Library", "A room filled with ancient tomes and a hidden switch behind a bookshelf. Moonlight filters through a stained-glass window.");
+
+
+Room DiningHall = new Room("DiningHall", "A spacious room with a long table set for a ghostly feast. A portrait with eyes that seem to follow your movements hangs on the wall. you see an old magnifying glass");
+
+
+Room Study = new Room(" Study" , "A cozy room with a crackling fireplace and a desk covered in scattered papers. A locked cabinet stands in one corner.");
+
+
+Room Kitchen = new Room("Kitchen", "An abandoned kitchen with rusted utensils and a boarded-up pantry. An eerie chill hangs in the air.");
+
+
+Room SecretPassage = new Room("Secret Passage", "A dimly lit passage lined with cobwebs. Mysterious inscriptions adorn the walls.");
+
+Room ServantsQuarters = new Room("Secret Passage", "Small, cramped rooms filled with dusty old furniture. A forgotten diary lies open on a nightstand.");
+
+Room Crypt = new Room("Crypt", " A chilling underground chamber with ancient sarcophagi. Strange symbols cover the walls, hinting at secrets.");
+
+Room Conservatory = new Room("Conservatory", "A glass-enclosed room overrun with withered plants. Moonlight casts eerie shadows on the floor.");
+
+Room WineCellar = new Room("Wine Cellar", "ows of dusty wine barrels line the walls. A hidden lever is concealed among the shelves.");
+
+
+Foyer.addExit(Library, 'e');
+Foyer.addExit(DiningHall, 's');
+Library.addExit(Foyer, 'w');
+Library.addExit(Study, 's');
+DiningHall.addExit(Foyer, 'e');
+DiningHall.addExit(Kitchen, 's');
+Study.addExit(Library, 'n');
+Study.addExit(SecretPassage, 'e');
+Kitchen.addExit(DiningHall, 'n');
+Kitchen.addExit(ServantsQuarters, 'w');
+SecretPassage.addExit(Study, 'w');
+SecretPassage.addExit(Crypt, 'n');
+ServantsQuarters.addExit(Kitchen, 'e');
+ServantsQuarters.addExit(Conservatory, 'n');
+Crypt.addExit(SecretPassage, 's');
+Crypt.addExit(WineCellar, 'w');
+Conservatory.addExit(ServantsQuarters, 's');
+Conservatory.addExit(WineCellar, 'e');
+WineCellar.addExit(Crypt, 'w');
+WineCellar.addExit(Conservatory, 'e');
+
+DiningHall.addExit(Foyer, 'w');
+
+
+
+Item magnifyingGlass = new Item("magnifying glass");
+magnifyingGlass.setDesc("Helps decipher cryptic inscriptions.");
+DiningHall.addItem(magnifyingGlass);
+DiningHall.setLocked(true);
+
+
+Item crypticKey = new Key();
+
+
+
+crypticKey.setDesc("It's an ornate key. Looks old.");
+
+
+
+Study.addItem(crypticKey);
+
+
+
+
+
+Foyer.addExit(Library, 'd');
+
+
+
+Item chest = new Item("chest");
+
+
+
+chest.setDesc("It is a large, heavy chest.");
+
+
+
+chest.setHeavy(true);
+
+
+
+Foyer.addItem(chest);
+
+
+
+Item Potion = new Item("Potion");
+
+
+
+Potion.setDesc("A magical potion that can restore your health or provide special abilities.");
+
+
+
+Foyer.addItem(Potion);
+
+
+
+
+
+
+
+Kitchen.addExit(Foyer, 's');
+
+
+
+Item Shower = new Item("Shower");
+
+
+
+Shower.setDesc("A shower in the room.");
+
+
+
+SecretPassage.addItem(Shower);
+
+
+
+
+
+SecretPassage.addExit(Foyer, 'n');
+
+Item Compass = new Item("compass");
+
+
+
+Compass.setDesc("A magical compass that always points you in the right direction.");
+
+
+
+SecretPassage.addItem(Compass);
+
+
+
+Item bottle = new Item("bottle");
+
+
+
+bottle.setDesc("An opaque glass bottle. Feels empty.");
+
+
+
+SecretPassage.addItem(bottle);
+
+
+
+
+
+Library.addExit(Foyer, 'u');
+
+
+
+Item wand = new Wand();
+
+
+
+wand.setDesc("The wand glows with an eerie light.");
+
+
+
+Library.addItem(wand);
+
+
+
+Item chain = new Item("Chain");
+
+
+
+chain.setDesc("There is a chian on the ceiling, it looks like it can be pulled");
+
+
+
+Library.addItem(wand);
+
+
+NPC Human = new Human();
+Library.addNPC(Human);
+
+NPC guide = new Guide(); // Create an instance of the Guide NPC
+Foyer.addNPC(guide);
+
+
+
+return Foyer;
+
+
+}
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
