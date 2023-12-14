@@ -1,0 +1,237 @@
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class Room {
+    private String name1;
+    private String description;
+    private List<Item> items;
+    private List<NPC> npcs;
+
+    private List<NPC> npcs1;
+
+    public Room() {
+        npcs = new ArrayList<>();
+        // Other constructor logic...
+    }
+
+    // Other methods...
+
+    public NPC findNPCByName(String npcName) {
+        for (NPC npc : npcs) {
+            if (npc.getName().equalsIgnoreCase(npcName)) {
+                return npc;
+            }
+        }
+        return null; // NPC not found with the given name
+    }
+
+    public void Room1(String name, String description) {
+        this.name1 = name;
+        this.description = description;
+        items = new ArrayList<>();
+        npcs = new ArrayList<>();
+    }
+
+    // Other methods in the Room class for managing items...
+
+    public void addNPC(NPC npc) {
+        npcs.add(npc);
+    }
+
+    public void removeNPC(NPC npc) {
+        npcs.remove(npc);
+    }
+
+    public Room displayNPCs() {
+        for (NPC npc : npcs) {
+            npc.look();
+        }
+		return down;
+    }
+    private String roomId;
+
+    public Room(String roomId) {
+        this.roomId = roomId;
+        Game.addRoomToMap(roomId, this);
+    }
+    public String getDesc1() {
+        return Game.roomDescriptions.get(roomId);
+    }
+
+
+    public void onEnter1() {
+        // Actions when entering the room
+        System.out.println("You entered the room: " + roomId);
+    }
+
+private Room east;
+
+private Room west;
+
+private Room north;
+
+private Room south;
+
+private Room up;
+
+private Room down;
+
+private String desc;
+
+private boolean locked; // Is the room locked?
+
+private String name;
+
+private HashMap<String, Item> roomItems;
+
+public Room(String n, String d) {
+
+name1 = n;
+
+desc = d;
+
+locked = false;
+
+roomItems = new HashMap<String, Item>();
+
+}
+
+public String getName() {
+
+return name1;
+
+}
+
+public boolean isLocked() {
+
+return locked;
+
+}
+
+public void setLocked(boolean b) {
+
+locked = b;
+
+}
+
+public Item getItem(String item) {
+
+return roomItems.get(item);
+
+}
+
+public Item removeItem(String name) {
+
+return roomItems.remove(name);
+
+}
+
+public void addItem(Item i) {
+
+roomItems.put(i.getName(), i);
+
+}
+
+public boolean hasItem(String name) {
+
+return roomItems.containsKey(name);
+
+}
+
+public String getDesc() {
+
+return desc;
+
+}
+
+
+
+
+
+
+
+public void addExit(Room r, char direction) {
+
+switch(direction) {
+
+case 'e': east = r; break;
+
+case 'w': west = r; break;
+
+case 'n': north = r; break;
+
+case 's': south = r; break;
+
+case 'u': up = r; break;
+
+case 'd': down = r; break;
+
+}
+
+}
+
+public Room getExit(char direction) {
+
+switch(direction) {
+
+case 'e': return east;
+
+case 'w': return west;
+
+case 'n': return north;
+
+case 's': return south;
+
+case 'u': return up;
+
+case 'd': return down;
+
+default : return null;
+
+}
+
+}
+
+public String toString() {
+
+return desc;
+
+}
+public void onEnter() {
+	// TODO Auto-generated method stub
+	
+}
+
+public Room look() {
+    System.out.println("Room Description: " + description);
+
+    System.out.println("Items in the room:");
+    if (items.isEmpty()) {
+        System.out.println("No items.");
+    } else {
+        for (Item item : items) {
+            System.out.println("- " + item.getName() + ": " + item.getDescription());
+        }
+    }
+
+    System.out.println("NPCs in the room:");
+    if (npcs.isEmpty()) {
+        System.out.println("No NPCs.");
+    } else {
+        for (NPC npc : npcs) {
+            System.out.println("- " + npc.getName() + ": " + npc.getDescription());
+        }
+    }
+	return down;
+}
+
+public static void setText(String s) {
+	// TODO Auto-generated method stub
+	
+}
+
+
+
+}
