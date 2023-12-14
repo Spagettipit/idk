@@ -1,0 +1,64 @@
+public class Human extends NPC {
+    private int talkCount;
+
+    public Human() {
+        super("human", "A friendly person stands before you.");
+        talkCount = 0;
+    }
+
+    @Override
+    public void talk() {
+        talkCount++;
+
+        if (talkCount == 1) {
+            say("Hello there! Lovely weather we're having, isn't it?");
+            String[] options = {
+                    "Yes, it's beautiful!",
+                    "Actually, it's quite dreadful."
+            };
+            int response = getResponse(options);
+            response(response);
+        } else if (talkCount == 2) {
+            say("Do you know the way to the nearby town?");
+            String[] options = {
+                    "Yes, I can guide you!",
+                    "No, sorry."
+            };
+            int response = getResponse(options);
+            response(response);
+        } else {
+            say("It was nice chatting with you!");
+        }
+    }
+
+    @Override
+    public void response(int option) {
+        if (talkCount == 1) {
+            switch (option) {
+                case 1:
+                    say("Indeed, it is!");
+                    break;
+                case 2:
+                    say("Oh, I see.");
+                    break;
+                default:
+                    say("I'm sorry, I didn't catch that.");
+                    break;
+            }
+        } else if (talkCount == 2) {
+            switch (option) {
+                case 1:
+                    say("Great! Lead the way, please.");
+                    // Perform action for guiding the player
+                    break;
+                case 2:
+                    say("No problem, I'll figure it out.");
+                    // Perform action for the NPC's response to not getting help
+                    break;
+                default:
+                    say("I didn't quite understand.");
+                    break;
+            }
+        }
+    }
+}
