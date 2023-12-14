@@ -78,7 +78,7 @@ public class GameGUI extends JFrame {
         SwingUtilities.invokeLater(GameGUI::new);
     }
 
-  private static void room() {
+  static void room() {
       System.out.println("Room Description:");
       // Display the current room's description
       String description = RoomDescriptions.getOrDefault(Currency.currentRoom(), "No description available.");
